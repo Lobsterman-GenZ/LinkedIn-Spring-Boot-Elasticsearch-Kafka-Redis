@@ -1,0 +1,44 @@
+spring:
+  application:
+    name: user-service
+
+  datasource:
+    url: jdbc:mysql://localhost:3306/user_db?createDatabaseIfNotExist=true
+    username: root
+    password: root
+    driver-class-name: com.mysql.cj.jdbc.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQLDialect
+
+  kafka:
+    bootstrap-servers: localhost:9092
+    producer:
+      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+server:
+  port: 8081
+
+jwt:
+  secret: 9HDEV0ehe5zw6rlGF5Nlyzg9EdR7PheQ8HaTr9HgKjk
+  expiration: 900000
+  refresh-expiration: 604800000
+
+aws:
+  access-key: AKIAVBAHUYTWG7B5RBC5
+  secret-key: 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
+  region: ap-southeast-2
+  s3:
+    bucket-name: linkedin-app-345760908524-ap-southeast-2-an
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info
